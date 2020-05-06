@@ -19,7 +19,7 @@ public class MyPApplet extends PApplet{
 		size(400,400);				//set canvas size
 		background(255);			//set canvas color
 		stroke(0);				//set pen color
-		img = loadImage("palmTrees.jpg", "jpg");
+		img = loadImage("https://www.wallpaperflare.com/static/991/877/188/night-silhouette-palm-trees-wallpaper.jpg", "jpg");
 	}
 	
 	public void draw() {
