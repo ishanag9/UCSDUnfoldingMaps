@@ -24,8 +24,8 @@ import parsing.ParseFeed;
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
- * Date: July 17, 2015
+ * @author Ishan Agrawal
+ * Date: May 14, 2020
  * */
 public class EarthquakeCityMap extends PApplet {
 
@@ -77,7 +77,10 @@ public class EarthquakeCityMap extends PApplet {
 	    // to create a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
-	    
+        for(PointFeature pointFeature : earthquakes){
+            SimplePointMarker simplePointMarker =  createMarker(pointFeature);
+            markers.add(simplePointMarker);
+        }
 	    
 	    // Add the markers to the map so that they are displayed
 	    map.addMarkers(markers);
@@ -103,11 +106,13 @@ public class EarthquakeCityMap extends PApplet {
 		SimplePointMarker marker = new SimplePointMarker(feature.getLocation());
 		
 		Object magObj = feature.getProperty("magnitude");
-		float mag = Float.parseFloat(magObj.toString());
+		float magnitude = Float.parseFloat(magObj.toString());
 		
 		// Here is an example of how to use Processing's color method to generate 
 	    // an int that represents the color yellow.  
 	    int yellow = color(255, 255, 0);
+	    int red = color(255,0,0);
+	    int blue = color(255,0,0);
 		
 		// TODO (Step 4): Add code below to style the marker's size and color 
 	    // according to the magnitude of the earthquake.  
@@ -116,7 +121,19 @@ public class EarthquakeCityMap extends PApplet {
 	    // Rather than comparing the magnitude to a number directly, compare 
 	    // the magnitude to these variables (and change their value in the code 
 	    // above if you want to change what you mean by "moderate" and "light")
-	    
+	    if(magnitude < 4.0){
+	        // minor earthquakes
+	        marker.setColor(blue);
+	        marker.setRadius(5.0f);
+        } else if(magnitude < 5.0){
+            // light earthquakes
+            marker.setColor(yellow);
+            marker.setRadius(10.0f);
+        } else {
+            // high earthquakes
+            marker.setColor(red);
+            marker.setRadius(15.0f);
+        }
 	    
 	    // Finally return the marker
 	    return marker;
@@ -134,6 +151,30 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
-	
-	}
+        // Make the box
+        fill(255, 255, 255);
+        rect(30, 100, 150, 300, 7);
+        // Make the text strings
+        textSize(12);
+        String eq_key = "Earthquake Key";
+        String mag_five = "5.0+ Magnitude";
+        String mag_four = "4.0+ Magnitude";
+        String mag_small = "Below 4.0";
+        fill(50);
+        text(eq_key, 60, 110, 150, 150);
+        text(mag_five, 80, 150, 150, 150);
+        text(mag_four, 80, 190, 150, 150);
+        text(mag_small, 80, 230, 150, 150);
+        //make the ellipses for the key
+        //magnitude five
+        fill(221, 30, 8);
+        ellipse(60, 157, 10, 10);
+        //magnitude four
+        fill(255, 255, 0);
+        ellipse(60, 198, 6, 6);
+        //magnitude small
+        fill(8, 31, 145);
+        ellipse(60, 237, 3, 3);
+
+    }
 }
