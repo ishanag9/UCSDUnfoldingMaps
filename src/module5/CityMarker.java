@@ -10,13 +10,13 @@ import processing.core.PGraphics;
 /** Implements a visual marker for cities on an earthquake map
  * 
  * @author UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
+ * @author Ishan Agrawal
  *
  */
 // TODO: Change SimplePointMarker to CommonMarker as the very first thing you do 
 // in module 5 (i.e. CityMarker extends CommonMarker).  It will cause an error.
 // That's what's expected.
-public class CityMarker extends SimplePointMarker {
+public class CityMarker extends CommonMarker {
 	
 	public static int TRI_SIZE = 5;  // The size of the triangle marker
 	
@@ -31,7 +31,24 @@ public class CityMarker extends SimplePointMarker {
 		// and "population" (population, in millions)
 	}
 
-	
+
+	/* Local getters for some city properties.
+	 */
+	public String getCity()
+	{
+		return getStringProperty("name");
+	}
+
+	public String getCountry()
+	{
+		return getStringProperty("country");
+	}
+
+	public float getPopulation()
+	{
+		return Float.parseFloat(getStringProperty("population"));
+	}
+
 	/**
 	 * Implementation of method to draw marker on the map.
 	 */
@@ -50,26 +67,10 @@ public class CityMarker extends SimplePointMarker {
 	/** Show the title of the city if this marker is selected */
 	public void showTitle(PGraphics pg, float x, float y)
 	{
-		
 		// TODO: Implement this method
+		String cityText = getCity() + ", " + getCountry() + "\nPop:" + getPopulation() + "Million";
+		pg.fill(0);
+		pg.text(cityText, x, y);
 	}
-	
-	
-	
-	/* Local getters for some city properties.  
-	 */
-	public String getCity()
-	{
-		return getStringProperty("name");
-	}
-	
-	public String getCountry()
-	{
-		return getStringProperty("country");
-	}
-	
-	public float getPopulation()
-	{
-		return Float.parseFloat(getStringProperty("population"));
-	}
+
 }
