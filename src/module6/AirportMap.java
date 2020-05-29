@@ -17,8 +17,7 @@ import processing.core.PApplet;
 
 /** An applet that shows airports (and routes)
  * on a world map.  
- * @author Adam Setters and the UC San Diego Intermediate Software Development
- * MOOC team
+ * @author Ishan Agrawal
  *
  */
 public class AirportMap extends PApplet {
@@ -36,7 +35,7 @@ public class AirportMap extends PApplet {
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		// get features from airport data
-		List<PointFeature> features = ParseFeed.parseAirports(this, "airports.dat");
+		List<PointFeature> features = ParseFeed.parseAirports(this, "C:/Users/Ishan Agrawal/IdeaProjects/UCSDUnfoldingMaps/data/airports.dat");
 		
 		// list for markers, hashmap for quicker access when matching with routes
 		airportList = new ArrayList<Marker>();
@@ -56,7 +55,7 @@ public class AirportMap extends PApplet {
 		
 		
 		// parse route data
-		List<ShapeFeature> routes = ParseFeed.parseRoutes(this, "routes.dat");
+		List<ShapeFeature> routes = ParseFeed.parseRoutes(this, "C:/Users/Ishan Agrawal/IdeaProjects/UCSDUnfoldingMaps/data/routes.dat");
 		routeList = new ArrayList<Marker>();
 		for(ShapeFeature route : routes) {
 			
@@ -75,13 +74,13 @@ public class AirportMap extends PApplet {
 			System.out.println(sl.getProperties());
 			
 			//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-			//routeList.add(sl);
+//			routeList.add(sl);
 		}
 		
 		
 		
 		//UNCOMMENT IF YOU WANT TO SEE ALL ROUTES
-		//map.addMarkers(routeList);
+//		map.addMarkers(routeList);
 		
 		map.addMarkers(airportList);
 		
