@@ -10,4 +10,4 @@ This project is an interactive visualization of a large dataset tagged by geospa
 * Used core object oriented programming principles like encapsulation, inheritance, polymorphism and abstraction.
 * Implement event driven programming and effecient searching and sorting techniques for data to be displayed.
 
-
+![](data/project.png)
