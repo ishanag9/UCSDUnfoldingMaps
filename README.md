@@ -24,6 +24,4 @@ This project is an interactive visualization of a large dataset tagged by geospa
 
 ![](data/output1.jpg)
 
-![](data/output2.jpg)
-
 ![](data/output3.jpg)
